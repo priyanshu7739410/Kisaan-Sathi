@@ -7,13 +7,13 @@ KISAN SATHI (MVP Core)
 ├── 1. Onboarding & Profiling
 │   ├── 1.1 Authentication
 │   │   ├── Phone Number Input
-│   │   ├── OTP Verification (Auto-read SMS)
+│   │   ├── OTP Verification
 │   │   └── Session state (Persistent JWT)
 │   ├── 1.2 Language Selection
 │   │   ├── Language List (Scheduled Indian Languages)
 │   │   └── Standard UI translations loading
 │   ├── 1.3 Farm Setup
-│   │   ├── Land Photo Capture (triggering GPS/village fallback)
+│   │   ├── Land Photo Capture/Upload (with GPS/village fallback)
 │   │   ├── AI Soil Classification Nudge (Verify detected type)
 │   │   ├── Water Availability Input (Borewell, rainfed, canal, drip)
 │   │   └── Farm Size Input (Acres/Bighas)
@@ -44,8 +44,8 @@ KISAN SATHI (MVP Core)
 │       └── Visual stage indicators (Sowing -> Vegetative -> Flowering)
 │
 ├── 4. Photo AI Diagnostics
-│   ├── 4.1 Leaf Image Capture
-│   │   ├── Live camera frame capture (triggering focus check)
+│   ├── 4.1 Leaf Image Upload/Capture
+│   │   ├── Web camera dropzone upload with mobile camera triggers
 │   │   └── Gallery upload fallback (with missing metadata prompt)
 │   ├── 4.2 Crop Validation Step
 │   │   ├── Display detected crop type

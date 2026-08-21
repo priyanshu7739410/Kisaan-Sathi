@@ -46,7 +46,7 @@ Every non-trivial task must follow a structured lifecycle:
 ## KISAN SATHI TECH STACK & ARCHITECTURE
 
 The Kisan Sathi codebase utilizes the following technologies:
-- **Frontend:** React Native + Expo (TypeScript)
+- **Frontend:** React + TypeScript (web application)
 - **Backend:** Node.js (Express) + TypeScript
 - **Database:** MongoDB + Mongoose (with GeoJSON 2dsphere mapping)
 - **AI Architecture:** Model Cloud SDK integrations with custom abstractions

@@ -221,4 +221,35 @@ REST API Endpoint specification for backend integration.
     { "post_id": "post-uuid", "message": "Post published to community" }
     ```
 
+---
+
+## 8. API Control & Governance
+
+### API Versioning & Routing
+*   All endpoints are versioned with a prefix (e.g., `/api/v1`).
+*   Routing is handled by Express Router, separated modularly by domain (auth, farms, tracker, vision, chat, marketplace, community).
+
+### Request Validation
+*   Endpoints enforce input schemas using **Zod** models before hitting controller layers. Invalid payloads trigger a `400 Bad Request` containing precise validation error lists.
+
+### Authentication & Authorization
+*   Session security utilizes stateless **JWT** tokens passed via HTTP-only Cookies or Bearer headers.
+*   Middleware restricts private endpoints, mapping user credentials from decoded tokens into `req.user`.
+
+### Rate Limiting & Security Headers
+*   Rate limiting is enforced at the API gateway layer using `express-rate-limit` (e.g., maximum 100 requests per 15 minutes per IP).
+*   Standard HTTP security headers are set using `helmet`.
+*   Cross-Origin Resource Sharing (CORS) is explicitly configured to whitelist the React client origin.
+
+### Error Handling
+*   Global Express error handling middleware intercepts thrown errors, normalizing responses to:
+    ```json
+    { "error": "Error message", "code": "ERROR_CODE", "details": {} }
+    ```
+*   Stack traces are suppressed in production.
+
+### Frontend/Backend Separation & Environment Config
+*   The system maintains a clean boundary: React web client and Express backend communicate purely over REST/WS.
+*   Config parameters (ports, secrets, CORS origins, API keys) are injected via `.env` files managed via `dotenv`.
+
 

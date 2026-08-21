@@ -1,6 +1,6 @@
 # Kisan Sathi Technical System Architecture
 
-This document specifies the technical architecture blueprint for the Kisan Sathi mobile app and backend system, matching our project constraints.
+This document specifies the technical architecture blueprint for the Kisan Sathi web application and backend system, matching our project constraints.
 
 ---
 
@@ -11,13 +11,16 @@ Kisan Sathi implements a **Modular Monolith** backend structure in Express.js (N
 ```mermaid
 graph TD
     %% Frontend Layer
-    RN["React Native / Expo App (TS)"]
-    SQLite["Local SQLite Cache (Offline Log)"]
-    RN -- Local Cache -- SQLite
+    Browser["Web Browser (Chrome/Safari/Firefox)"]
+    ReactApp["React + TypeScript Web Client"]
+    LocalStorage["Local Storage Cache (Offline Actions)"]
+    
+    Browser --> ReactApp
+    ReactApp -- Sync Action -- LocalStorage
 
     %% Networking
-    RN -- HTTPS / REST APIs -- API_Gateway["Express API Gateway"]
-    RN -- WebSocket -- Chat_Stream["Express Chat WS Server"]
+    ReactApp -- HTTPS / REST APIs -- API_Gateway["Express API Gateway"]
+    ReactApp -- WebSocket -- Chat_Stream["Express Chat WS Server"]
 
     %% Backend Monolith
     subgraph "Express Backend (Modular Monolith)"
@@ -44,11 +47,12 @@ graph TD
 
 ## 2. Component Technology Stack
 
-### Frontend Mobile Application
-*   **Core:** React Native, managed via **Expo (TypeScript)**.
-*   **Local Caching:** SQLite database (via `expo-sqlite`) logging offline event actions.
+### Frontend Web Application
+*   **Core:** React web app, managed via **Vite (TypeScript)**.
+*   **Local Caching:** Web Storage (LocalStorage/IndexedDB) logging offline event actions.
 *   **Networking:** Axios client with automated retry and synchronization queues.
-*   **Push Notifications:** Firebase Cloud Messaging (FCM) via Expo Notifications.
+*   **Push Notifications:** Web Push API via Service Workers.
+*   **Animation System:** React Bits, Motion, and Anime.js.
 
 ### Backend Infrastructure
 *   **Framework:** **Node.js (Express.js) + TypeScript**. Handles HTTP requests and web socket connections.
@@ -57,4 +61,4 @@ graph TD
     *   **GeoJSON 2dsphere index:** Used for geospatial polygon coordinates checks.
     *   **Text indexes:** Used for lexical agricultural knowledge search.
 *   **Storage:** **S3-compatible object storage** (e.g. AWS S3 or MinIO) for crop leaf images.
-*   **Deployment:** **Docker Compose** orchestrating Node.js server, MongoDB, and ObjectStorage containers. Production deployments utilize EAS for mobile app, Render/Railway for Express, and MongoDB Atlas for database.
+*   **Deployment:** **Docker Compose** orchestrating Node.js server, MongoDB, and ObjectStorage containers. Production deployments utilize Render/Railway for Express/Vite, and MongoDB Atlas for the database.

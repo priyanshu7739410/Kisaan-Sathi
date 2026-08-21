@@ -1,12 +1,12 @@
 # Kisan Sathi Product Vision
 
 ## 1. Product Description
-Kisan Sathi is an AI-powered agricultural intelligence platform for Indian farmers, local buyers, and traders. The platform shifts agricultural workflows from traditional, fragmented, and information-poor practices to data-informed, modern, personalized, and intelligent decisions.
+Kisan Sathi is an AI-powered agricultural intelligence web platform for Indian farmers, local buyers, and traders. The platform shifts agricultural workflows from traditional, fragmented, and information-poor practices to data-informed, modern, personalized, and intelligent decisions.
 
-Kisan Sathi is not a generic chatbot. It acts as an active assistant that integrates details about the **Farmer, Farm, Location, Soil, Crop Stage, Weather, and Government data** to recommend direct, actionable steps, while serving as a collaborative marketplace connecting farmers with regional buyers and peers.
+Kisan Sathi acts as an active web assistant that integrates details about the **Farmer, Farm, Location, Soil, Crop Stage, Weather, and Government data** to recommend direct, actionable steps, while serving as a collaborative marketplace connecting farmers with regional buyers and peers.
 
 ## 2. Core Value Proposition: "What to do today?"
-The platform centers around answering the farmer's daily questions:
+The platform centers around answering the farmer's daily questions via a responsive browser experience:
 *   What tasks should I perform today based on my crop stage and weather?
 *   Is my crop healthy, and what is the exact cause of any leaf damage?
 *   What is the dynamic weather impact on my irrigation and spraying plans?
@@ -18,8 +18,8 @@ To maximize user validation and deliver immediate value, the MVP will focus on a
 2.  **Farmer Intelligence Dashboard:** Live weather warnings, dynamic alerts, and actions for today.
 3.  **Crop Tracking & Dynamic Alerts (Smart Calendar):** Logging actions (fertilizers, irrigation) and receiving follow-up suggestions.
 4.  **Local Buyer Marketplace:** Allowing registered buyers and traders to list active purchase offers and contact details, and enabling farmers to browse local listings.
-5.  **P2P Kisan Community Hub:** A Reddit-style forum structured by district/crop where farmers ask questions, coordinate logistics, and share local mandi details.
-6.  **Photo AI Diagnostics:** Photographing leaf diseases, verifying the crop, and retrieving verified treatment citations.
+5.  **P2P Kisan Community Hub:** A forum structured by district/crop where farmers ask questions, coordinate logistics, and share local mandi details.
+6.  **Photo AI Diagnostics:** Uploading leaf disease photos, verifying the crop, and retrieving verified treatment citations.
 7.  **AI Farmer Chatbot:** Conversational assistant with tool access (weather, RAG crop manuals) to handle farmer queries.
 
 ## 4. Core AI Feature: Scenario-Based Risk Analysis
@@ -30,4 +30,3 @@ The highlight AI capability of Kisan Sathi is the **Scenario-Based Risk Analysis
     *   *Heatwave/Drought Scenario:* Extra watering/mulching (conserves soil moisture, high labor cost) vs. Do nothing (wilting, transpiration shock, and yield drop).
     *   *High Wind/Cyclone Scenario:* Stake crops & Postpone sprays (prevents breakage and pesticide drift waste) vs. Do nothing (stem breakage, defoliation).
 *   **Economic Impact Modeling:** Displays concrete, localized financial estimates for each decision outcome.
-

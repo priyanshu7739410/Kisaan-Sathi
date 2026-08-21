@@ -1,38 +1,37 @@
-# Kisan Sathi Screen Inventory
+# Kisan Sathi Web View & Route Inventory
 
-A complete checklist of mobile application screens, modal states, and fallback layouts for the Kisan Sathi MVP.
+A complete checklist of web pages, routes, dialogs, overlays, and system states for the Kisan Sathi Web MVP.
 
 ## 1. Onboarding Module
-*   `SCR-ONB-001: Language Selection Screen` (Initial launch; large tiles for Hindi, Marathi, Telugu, etc.)
-*   `SCR-ONB-002: Phone Input Screen` (Minimalist UI, focus on number keypad)
-*   `SCR-ONB-003: OTP Verification Screen` (6-digit block input, auto-submit on read)
-*   `SCR-ONB-004: Land Photo Capture Screen` (Camera overlay with GPS indicator)
-*   `SCR-ONB-005: Farm Details Form` (Input fields for Village name, farm size, and water source options dropdown)
-*   `SCR-ONB-006: Soil Type Confirmation Overlay` (Presents detected soil type, button to approve, or change)
-*   `SCR-ONB-007: Active Crop Selector` (Large crop cards to choose Cotton, Wheat, Rice, Okra)
+*   `VW-ONB-001: Language Selection View` (Route: `/select-language` — large tiles for Hindi, Marathi, English)
+*   `VW-ONB-002: Phone Input View` (Route: `/login` — minimalist input form)
+*   `VW-ONB-003: OTP Verification View` (Route: `/login/verify` — OTP token input)
+*   `VW-ONB-004: Land Photo Upload View` (Route: `/onboard/photo` — file selector/dropzone with GPS status check)
+*   `VW-ONB-005: Farm Details View` (Route: `/onboard/details` — form with village, acreage, and water source select)
+*   `VW-ONB-006: Soil Type Confirmation Overlay` (Presents detected soil type with options to confirm or change)
+*   `VW-ONB-007: Active Crop Selector` (Route: `/onboard/crops` — grid cards to choose Cotton, Wheat, Rice, Okra)
 
 ## 2. Home Dashboard Module
-*   `SCR-HOM-001: Main Dashboard Screen` (Standard state)
-*   `SCR-HOM-002: Alerts Modal Details` (Appears when tapping a weather or pest emergency card)
-*   `SCR-HOM-003: Offline Mode Banner` (Embedded dashboard header overlay when connection is lost)
+*   `VW-HOM-001: Main Dashboard View` (Route: `/dashboard` — standard grid state)
+*   `VW-HOM-002: Alerts Dialog / Drawer` (Responsive modal displaying weather or pest emergency details)
+*   `VW-HOM-003: Offline Status Banner` (Embedded header banner overlay when network connection is lost)
 
 ## 3. Crop Tracker Module
-*   `SCR-TRK-001: Smart Calendar Screen` (Interactive lifecycle line and task blocks)
-*   `SCR-TRK-002: Log Activity Form` (Inputs for activity type, quantity/dosage, date selector modal)
-*   `SCR-TRK-003: Log History Sheet` (Scrollable bottom sheet detailing past fertilizer/irrigation records)
+*   `VW-TRK-001: Smart Calendar View` (Route: `/tracker` — interactive lifecycle line and task blocks)
+*   `VW-TRK-002: Log Activity Dialog` (Responsive overlay containing activity details form)
+*   `VW-TRK-003: Log History Drawer` (Collapsible slide-out panel detailing past fertilizer/irrigation records)
 
 ## 4. Photo AI Module
-*   `SCR-PHO-001: Capture Viewfinder Screen` (Live camera screen with focus/sharpness warning indicator)
-*   `SCR-PHO-002: Gallery Image Picker Screen` (Native gallery selection layout)
-*   `SCR-PHO-003: Crop Validation Screen` (Confirms crop identification, editable dropdown list option)
-*   `SCR-PHO-004: Diagnostic Diagnosis Screen` (Results display with severity, RAG chemical treatment citations)
-*   `SCR-PHO-005: Expert Escalation Status Screen` (Confirmation of ticket creation, status update details)
+*   `VW-PHO-001: Diagnose Upload View` (Route: `/diagnose` — file dropzone supporting capture input)
+*   `VW-PHO-002: Crop Validation View` (Confirms crop identification, editable dropdown select)
+*   `VW-PHO-003: Diagnostic Report View` (Route: `/diagnose/report` — display with severity, RAG citations)
+*   `VW-PHO-004: Expert Escalation Dialog` (Confirmation of agronomist review ticket creation)
 
 ## 5. AI Chat Module
-*   `SCR-CHA-001: AI Conversation Screen` (Text messages, voice note playback, tool search indicators)
-*   `SCR-CHA-002: Citation Source Viewer Screen` (Simple overlay showing PDF references and date retrieved)
+*   `VW-CHA-001: AI Conversation View` (Route: `/chat` — text thread interface with inline weather/pricing widgets)
+*   `VW-CHA-002: Citation Source Overlay` (Popover showing PDF references and verified metadata)
 
 ## 6. General System States (Edge Layouts)
-*   `SCR-SYS-001: Permission Request Layout` (Triggered for Camera or Location; instructions on why it is needed)
-*   `SCR-SYS-002: Network Offline Fallback Screen` (Full-page empty state for tabs requiring server execution)
-*   `SCR-SYS-003: Data Loading / Spinner Screen` (Sleek pulse animation during soil analysis or chat processing)
+*   `VW-SYS-001: Browser Permission Guide` (Instructions shown inline when geolocation or camera permission is blocked)
+*   `VW-SYS-002: Network Offline Full-Page Fallback` (Empty state rendered when routes requiring server connectivity are visited offline)
+*   `VW-SYS-003: Data Loading Pulse State` (Sleek motion pulse during soil analysis or chat processing)

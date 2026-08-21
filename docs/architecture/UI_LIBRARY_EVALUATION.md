@@ -1,55 +1,52 @@
-# Kisan Sathi UI Library & Animation Evaluation
+# Kisan Sathi UI Library & Animation Evaluation (React Web)
 
-This document evaluates the compatibility of the requested design libraries with React Native + Expo, locking our animation and charting implementation plans.
+This document evaluates the compatibility and usage of modern frontend design, animation, and visualization libraries for the Kisan Sathi Web Platform.
 
 ---
 
 ## 1. Library Compatibility Matrix
 
-| Library | Platform | React Native / Expo Compatible? | Decision |
+| Library | Platform | React Web Compatible? | Decision |
 | :--- | :--- | :--- | :--- |
-| **React Bits** | Web-only | **No.** Relies on Tailwind CSS, Framer Motion, and browser canvas APIs. | **REJECTED.** Recreate specific visual interactions natively. |
-| **Anime.js** | Web/JS | **No.** Runs animations on the JS thread, causing lag on low-end Android. | **REJECTED.** Use React Native Reanimated for native thread animations. |
-| **Motion** | Web-only | **No.** Framer Motion targets browser HTML/SVG elements. | **REJECTED.** Replaced with **Moti** (a native-compatible declarative wrapper). |
-| **Bklit** | Web-only | **No.** Tailwind/browser template layouts. | **REJECTED.** Use strictly as a visual design reference. |
+| **React Bits** | Web-only | **Yes.** Runs perfectly on browser Canvas and CSS rendering. | **APPROVED.** Use for polished interactive components and UI layout patterns. |
+| **Anime.js** | Web/JS | **Yes.** Highly efficient DOM animation engine. | **APPROVED.** Use for advanced timeline animations and complex visual storytelling sequences. |
+| **Motion** (Framer) | Web-only | **Yes.** Primary animation library for React web apps. | **APPROVED.** Use for page/layout transitions and gesture feedback. |
+| **Bklit** | Web-only | **Yes.** Creative web layouts and styling components. | **APPROVED.** Use selectively where compatible with the chosen React web structure. |
 
 ---
 
-## 2. Recreating Web Animations Natively
+## 2. Web Implementation Strategy
 
-### A. React Bits Adaptations
-*   **Staggered Lists / Cards:** Recreated using React Native Reanimated's `stagger` sequences or native flatlist layout animations.
-*   **Animated Text Reveal:** Recreated using opacity/translate animation loops running on the native UI thread.
-*   **Backgrounds / Particles:** Exclude heavy WebGL canvas scripts. Use simple, flat SVG icons with low opacity for decorative agricultural patterns.
+### A. React Bits
+*   **Purpose:** Reusable, modern web building blocks, canvas effects, text transitions, and interactive grids.
+*   **Accessibility:** Ensure text revails have appropriate ARIA labels and do not violate minimum contrast ratios.
 
-### B. Motion Adaptations
-*   We use **Moti** for declarative animations:
+### B. Motion (Framer Motion)
+*   **Purpose:** Page entrance/exit animations, modal slide-ins, drawer transitions, and responsive layout shifts.
+*   **Example Usage:**
     ```tsx
-    import { View } from 'moti';
+    import { motion } from 'framer-motion';
     
-    <View
-      from={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ type: 'timing', duration: 300 }}
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
     />
     ```
 
-### C. Anime.js Sequencing Adaptations
-*   All sequencing, stagger, and spring timelines are implemented using Reanimated's `withSequence` and `withDelay` APIs running directly on the native thread.
+### C. Anime.js
+*   **Purpose:** Complex, multi-element choreographies, SVG morphing, data-visualizations, and custom timeline-based storytelling animations.
+*   **Rule:** Use strictly for visualization contexts. Avoid using it for simple interactive components where CSS transitions or Motion suffice.
 
-### D. Bklit Charts Adaptations
-*   Bklit web chart modules are replaced with **Victory Native XL** or custom paths rendered via `react-native-svg`.
-
----
-
-## 3. Primary Animation Engine: React Native Reanimated & Moti
-*   **Primary Engine:** `react-native-reanimated` (runs animations on the UI thread at 60 FPS).
-*   **Declarative Wrapper:** `moti` (enables Framer Motion-style properties for layout states).
-*   **Constraint:** No JS-thread animation loops are allowed in P0 to prevent CPU throttling on low-end Android.
+### D. Bklit
+*   **Purpose:** Layout inspiration and creative elements.
+*   **Rule:** Integrate only components that are compatible with React, Tailwind CSS, and TypeScript. Do not include files that depend on incompatible rendering engines.
 
 ---
 
-## 4. Accessibility & Reduced Motion
-To support users with motion sensitivity or low-spec devices, all animations must verify the device motion setting:
-*   Use `useReducedMotion()` from Reanimated.
-*   If `reducedMotion` is true, immediately bypass timing animations (duration set to `0`) and disable layout transitions.
+## 3. Accessibility & Performance Guidelines
+
+To support low-end mobile browsers and low-spec user devices:
+*   **Reduced Motion:** Standard media query `@media (prefers-reduced-motion: reduce)` must be respected. When active, all CSS, Motion, and Anime.js transitions must bypass durations or fall back to static displays immediately.
+*   **GPU Acceleration:** Prefer hardware-accelerated properties (`transform: translate3d/scale`, `opacity`) for smooth rendering on cheap processors.
+*   **Sunlight Contrast:** Enforce a minimum 4.5:1 (target 7:1) contrast ratio across all dynamic and animated UI states.

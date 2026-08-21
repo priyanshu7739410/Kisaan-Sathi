@@ -44,7 +44,7 @@ Transform tasks into verifiable goals:
 ## KISAN SATHI SPECIFIC RULES
 
 ### Technology Stack
-- **Frontend:** React Native + Expo (TypeScript)
+- **Frontend:** React + TypeScript (web application)
 - **Backend:** Node.js (Express) + TypeScript
 - **Database:** MongoDB + Mongoose (with GeoJSON 2dsphere mapping)
 - **DevOps:** Docker
